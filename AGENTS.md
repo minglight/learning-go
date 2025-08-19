@@ -12,6 +12,7 @@
 - 要看筆記 example (/.ch2/ch2_basic_types_declarations.ipynb)
 - 要看考題 example (./ch2/ch2_interview_questions.ipynb)
 - 要看考題答案example (./ch2/ch2_interview_answers_review.ipynb)
+
 ex of 說明 : 
 ## 1. 內建的型態
 
