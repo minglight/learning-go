@@ -9,7 +9,7 @@
 
 參考資訊 
 - 要觀看目錄 ( ./目錄.md)
-- 要看筆記 example (./ch2/ch2_basic_types_declarations.ipynb)
+- 要看筆記 example (/.ch2/ch2_basic_types_declarations.ipynb)
 - 要看考題 example (./ch2/ch2_interview_questions.ipynb)
 - 要看考題答案example (./ch2/ch2_interview_answers_review.ipynb)
 ex of 說明 : 
@@ -57,30 +57,3 @@ func main() {
 3. 改考卷
 當我寫完之後我會請你改考卷, 你要另外開一個jupyter file,  一開始要先寫summary, 說明哪裡寫錯或寫得不好,最後再一題一題講解copy我寫不好或寫錯的那一題的題目跟我寫的答案, 然後新增你的說明跟正確解答
 
-
-### 資料夾結構與命名規範
-
-- **章節資料夾**: 根據 `./目錄.md` 建立 `ch1` ~ `ch14`。
-- **每章標準檔案命名**:
-  - **章節總筆記**: `chN_note.ipynb`, 可以加上這章在做什麼in file name. ex: `ch2_basic_types_declarations.ipynb`
-  - **面試題庫**: `chN_interview_questions.ipynb`。
-  - **改卷與講解**: `chN_interview_answers_review.ipynb`。
-  - **Go 範例程式**: 放在同一章節資料夾底下的 `.go` 檔（例如 `pointer.go`）。若該章程式較多，可酌情新增 `examples/` 子資料夾，但預設直接放在章節根目錄。
-
-- **寫入位置規則**:
-  - 僅將與第 N 章相關的內容寫入 `./chN/`。
-
-- **命名規則**:
-  - 全部檔名使用小寫，單字以底線 `_` 分隔。
-  - 一律以 `chN_` 作為章節前綴（例如 `ch2_interview_questions.ipynb`）。
-  - Notebook 副檔名 `.ipynb`，Go 程式檔副檔名 `.go`。
-
-- **參考範例**:
-  - 章節 2 筆記：`./ch2/ch2_basic_types_declarations.ipynb`
-  - 章節 2 題目：`./ch2/ch2_interview_questions.ipynb`
-  - 章節 2 改卷：`./ch2/ch2_interview_answers_review.ipynb`
-
-- **指示 AI 時的寫入位置**:
-  - 「產生 chN 面試考題」→ 寫入 `./chN/chN_interview_questions.ipynb`。
-  - 「改 chN 考卷」→ 在 `./chN/chN_interview_answers_review.ipynb` 新增一個新的改卷段落。
-  - 「針對 chN產生筆記」→ 建立/更新 `./chN/chN_<chapter_subject>.ipynb`；`chapter_subject` 請以英文精簡描述主題。
