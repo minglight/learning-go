@@ -1,8 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Edit"
-    ]
+    "allow": "*"
   },
   "permissionMode": "acceptEdits"
 }

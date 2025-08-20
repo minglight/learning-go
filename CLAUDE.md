@@ -4,8 +4,8 @@
 1. 產生jupyter筆記 : 
 - 分章節產生jupyter學習筆記
 - 要完全根據指定的那一章的目錄產生筆記. 
-- 每一小節都至少要有從初階到進階的詳細說明 as markdown block, 然後接著code blocks做詳細的範例, 每一段展示code都要有comment說明
-- 如果有特別注意的點, 或是容易出錯的點都要說明
+- 除了每一章需要說明之外，每一小節也都至少要有從初階到進階的詳細說明(包含example) in markdown block, 然後接著code blocks做詳細的範例, 每一段展示code都要有comment說明
+- 如果有特別注意的點, 或是容易出錯的點也都要說明在markdown的部分跟 code block的部分
 
 參考資訊 
 - 要觀看目錄 ( ./目錄.md)
