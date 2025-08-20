@@ -84,3 +84,9 @@ func main() {
   - 「產生 chN 面試考題」→ 寫入 `./chN/chN_interview_questions.ipynb`。
   - 「改 chN 考卷」→ 在 `./chN/chN_interview_answers_review.ipynb` 新增一個新的改卷段落。
   - 「針對 chN產生筆記」→ 建立/更新 `./chN/chN_<chapter_subject>.ipynb`；`chapter_subject` 請以英文精簡描述主題。
+
+
+**注意事項**
+- 每一個章節跟小節都只需要照`目錄.md`來做, 稱為一個section, 分別是一個markdown block跟一個code block; 然後如果有注意事項可以寫在適合的section內部, 不需要另外開一個section來寫.
+- 每一個section的markdown block都要有詳細文字說明 + code example, 然後 code block可以再寫一次example.這樣子印象會比較深刻
+ 
