@@ -6,13 +6,14 @@
 - 要完全根據指定的那一章的目錄產生筆記. 
 - 除了每一章需要說明之外，每一小節也都至少要有從初階到進階的詳細說明(包含example) in markdown block, 然後接著code blocks做詳細的範例, 每一段展示code都要有comment說明
 - 如果有特別注意的點, 或是容易出錯的點也都要說明在markdown的部分跟 code block的部分
+- 你可以把每一小節拆成一個task來做
 
 參考資訊 
 - 要觀看目錄 ( ./目錄.md)
 - 要看筆記 example (./ch2/ch2_basic_types_declarations.ipynb)
 - 要看考題 example (./ch2/ch2_interview_questions.ipynb)
 - 要看考題答案example (./ch2/ch2_interview_answers_review.ipynb)
-ex of 說明 : 
+ex of 說明 in markdown : 
 ## 1. 內建的型態
 
 Go 提供了豐富的內建型態，包括：
