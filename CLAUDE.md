@@ -70,4 +70,228 @@
   - 「針對 chN產生筆記」→ 建立/更新 `./chN/chN_<chapter_subject>.ipynb`；`chapter_subject` 請以英文精簡描述主題。
 
 
+# AI Instructions & Guidelines
+
+## General Principles
+- Do what has been asked; nothing more, nothing less
+- NEVER create files unless they're absolutely necessary for achieving your goal
+- ALWAYS prefer editing an existing file to creating a new one
+- NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User
+
+## Jupyter Notebook Management
+
+### 🛠️ Tool Selection Rules
+
+| 任務類型 | 使用工具 | 說明 |
+|----------|----------|------|
+| **新建 notebook** | `Write` | 一次性創建完整結構 |
+| **修改單一 cell** | `NotebookEdit` | 替換或修改特定 cell |
+| **修改多個 cells** | `Write` | 重新創建整個 notebook |
+| **修復損壞檔案** | `Write` | 萃取內容後重建 |
+
+### ✨ Best Practices
+
+#### 1. **Meaningful Cell IDs 命名規範**
+
+所有 notebook cells 都應該有語義化的 ID，便於理解和維護：
+
+```markdown
+命名模式：
+- chapter-intro           # 章節介紹
+- section-1-basics        # 第一節：基礎概念
+- code-pointer-basic      # 指標基礎程式碼範例
+- section-2-slice         # 第二節：切片
+- code-slice-demo         # 切片示範程式碼
+- section-3-map           # 第三節：映射
+- code-map-examples       # 映射範例
+- chapter-summary         # 章節總結
+- practice-exercises      # 練習題
+```
+
+**ID 命名原則**：
+- 使用 kebab-case (小寫 + 連字符)
+- 包含內容類型前綴：`chapter-`, `section-`, `code-`, `practice-`
+- 描述性名稱，一看就知道內容
+- 按邏輯順序編號：`section-1`, `section-2`
+
+#### 2. **NotebookEdit 僅用於 Replace/Edit**
+
+**✅ 推薦用法**：
+```json
+// 修改現有 cell 內容
+{
+  "notebook_path": "/path/to/notebook.ipynb",
+  "cell_id": "code-pointer-basic",
+  "new_source": "/* 更新的程式碼 */\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    var x int = 42\n    var p *int = &x  // p 指向 x 的位址\n    fmt.Println(\"x =\", x)      // 印出: x = 42\n    fmt.Println(\"&x =\", &x)    // 印出: &x = 0xc000018098\n    fmt.Println(\"p =\", p)      // 印出: p = 0xc000018098\n    fmt.Println(\"*p =\", *p)    // 印出: *p = 42\n}"
+}
+
+// 替換特定章節說明
+{
+  "notebook_path": "/path/to/notebook.ipynb",
+  "cell_id": "section-1-basics",
+  "new_source": "## 1.1 指標基礎概念\n\n更新的說明內容..."
+}
+```
+
+**❌ 避免的用法**：
+```json
+// 不要用 insert 模式
+{
+  "edit_mode": "insert",  // 會導致順序問題
+  "cell_type": "markdown",
+  "new_source": "新內容"
+}
+```
+
+#### 3. **預規劃 Notebook 結構**
+
+在創建 notebook 前，先規劃完整結構：
+
+```markdown
+規劃範例 - Chapter 3: Pointers
+1. chapter-intro          : 章節介紹和學習目標
+2. section-1-basics       : 指標基礎概念
+3. code-basic-example     : 基礎指標範例
+4. section-2-operations   : 指標操作
+5. code-operations-demo   : 操作示範
+6. section-3-functions    : 指標與函式
+7. code-functions-example : 函式參數指標範例
+8. section-4-arrays       : 指標與陣列
+9. code-arrays-demo       : 陣列指標示範
+10. chapter-summary       : 章節總結
+```
+
+### ⚠️ 絕對禁止的操作
+1. **使用 NotebookEdit insert** - 不同task不知道彼此做了什麼, 所以會導致 cell 順序顛倒
+2. **混用 Write 和 NotebookEdit** - 容易產生結構衝突
+3. **手動轉義 JSON 屬性名** - `"metadata"` 不要寫成 `\"metadata\"`
+4. **在損壞檔案上直接修復** - 必須重新創建
+
+**執行流程**：
+1. **規劃階段**: 列出所有 sections 和對應 cell IDs
+2. **準備階段**: 準備所有 markdown 和 code 內容
+3. **檢查階段**: 檢查輸出格式
+  - [ ] 所有引號格式一致（無 `\"` 轉義字符）
+  - [ ] JSON 結構完整（brackets 和 braces 配對）
+  - [ ] metadata 部分格式與 cells 部分一致
+4. **創建階段**: 使用 Write 工具一次性創建完整結構
+  - 如果遇到Output Token Maximum超過的API Error, 就把筆記拆成兩份.
+5. **維護階段**: 只用 NotebookEdit replace 模式做小幅修正
+
+### 📋 正確的 Jupyter Notebook JSON 結構
+
+```json
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "id": "unique-cell-id",
+      "metadata": {},
+      "source": [
+        "# 章節標題\n",
+        "\n",
+        "這是 markdown 內容"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "id": "code-cell-id",
+      "metadata": {},
+      "execution_count": null,
+      "outputs": [],
+      "source": [
+        "/* Go 程式範例 */\n",
+        "package main\n",
+        "\n",
+        "import \"fmt\"\n",
+        "\n",
+        "func main() {\n",
+        "    fmt.Println(\"Hello, World!\")\n",
+        "}"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Go",
+      "language": "go",
+      "name": "gophernotes"
+    },
+    "language_info": {
+      "file_extension": ".go",
+      "mimetype": "text/x-go",
+      "name": "go"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 4
+}
+```
+
+### 🔥 Critical JSON Formatting Rules
+
+**根本問題**: 混合使用轉義和非轉義引號格式會導致 JSON 解析失敗
+
+**❌ 錯誤的混合格式**:
+```json
+"cells": [...],           // ✓ 正確的非轉義格式
+\"metadata\": {           // ✗ 錯誤的轉義格式
+  \"kernelspec\": {...}   // ✗ 造成解析錯誤
+}
+```
+
+**✅ 正確的一致格式**:
+```json
+"cells": [...],
+"metadata": {
+  "kernelspec": {...}
+}
+```
+
+**Prevention Rules**:
+- 整個 JSON 檔案必須使用一致的引號格式
+- 使用 Write tool 時檢查是否有 `\"` 轉義字符出現
+- metadata 部分必須與 cells 部分使用相同格式
+
+## Notebook 修復流程
+
+### 🚨 診斷損壞的 Notebook
+
+1. **識別錯誤**: JSON 解析錯誤通常出現在特定行列位置
+2. **萃取內容**: 即使 JSON 損壞，內容通常還是可讀的
+3. **重建策略**: 完全重新創建，不要嘗試修復
+
+### 🔧 修復標準流程
+
+```markdown
+1. **診斷階段**
+   - 嘗試 Read 檔案（會顯示錯誤位置）
+   - 用 Bash 工具查看檔案結構
+
+2. **萃取階段**
+   - 從損壞檔案中複製所有 markdown 和 code 內容
+   - 重新組織內容結構和邏輯順序
+
+3. **重建階段**
+   - 移除損壞檔案
+   - 使用 Write 工具創建全新的正確結構
+   - 確保所有 cell ID 唯一
+
+4. **驗證階段**
+   - 確認新檔案可以正常開啟
+   - 檢查內容完整性
+```
+
+### ⚡ 快速修復檢查清單
+
+**修復前檢查**:
+- [ ] 已確認檔案損壞的具體位置
+- [ ] 已萃取所有重要內容
+- [ ] 已規劃重建後的結構
+
+**修復後檢查**:
+- [ ] 檔案可以正常開啟
+- [ ] 所有 cell ID 唯一
+- [ ] JSON 格式一致（無混合引號）
+- [ ] 內容完整性確認
 
