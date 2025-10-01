@@ -5,6 +5,8 @@
 - 產生面試考題
 - 改考卷
 
+**重要** : 不需要把修改檔案的diff印在console
+
 ### 參考資訊 
 - 要觀看目錄 ( ./目錄.md)
 - 要看筆記 example (./ch2/ch2_basic_types_declarations.ipynb)
