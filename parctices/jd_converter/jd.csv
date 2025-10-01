@@ -1,0 +1,356 @@
+Job Title,Platform – Principle Engineer,Platform – Senior Engineer,"Kernel – Senior Engineer
+",Security – Senior Engineer,Infrastructure - Staff Software Engineer,Infrastructure - Senior Software Engineer,Infrastructure - Software Engineer,Controller - Principal Engineer,Controller - Principal Engineer,Controller - Principal Engineer,Controller - Staff Engineer,Controller - Staff Engineer,Controller - Staff Engineer,Controller - Staff Engineer,Controller - Senior Software Engineer,Controller - Senior Software Engineer,Cloud Controller - Principal Engineer,Cloud Controller - Principal Engineer,Cloud Controller - Principal Engineer,Cloud Controller - Staff Engineer,Cloud Controller - Staff Engineer,Cloud Controller - Senior Engineer,Frontend - Team Lead,Frontend - Principal Engineer,Frontend - Staff Engineer,Frontend - Staff Engineer ( MSP & Enterprise),Frontend - Staff Engineer ( Real-time & Notification),Frontend - Senior Engineer ( Form and Search),Frontend - Senior Engineer ( Integration & Charts),Frontend - Senior Engineer ( i18n and core features)
+Headcount,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1
+Status,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce,Request to Announce
+Requsted by,Tony Hsieh,Tony Hsieh,Tony Hsieh,Tony Hsieh,Melvin Lin,Melvin Lin,Melvin Lin,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh,Hank Hsieh
+Requste date,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15,2025/09/15
+Reviewed & Approved by,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Approved date,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Primary Responsibilities,"- Design and support BSPs for embedded platforms.
+- Implement OS integration for Linux and OpenWrt on hardware systems.
+- Adapt and configure bootloaders (such as U-Boot) along with kernel-level modules.
+- Implement and verify device drivers for various peripherals (experience with one or more of the following: Ethernet, USB, PCIe, I2C, SPI, UART, GPIO, eMMC/SD, and serial communication).
+- Execute hardware bring-up processes, including system configuration and troubleshooting.
+- Work closely with hardware engineering teams to analyze schematics and assist with new platform development.
+- Execute comprehensive system debugging and optimize performance parameters.
+- Create and update technical documentation covering component specifications, testing procedures, and release documentation.","- Design, develop, and maintain BSPs for embedded platforms.
+- Integrate Linux and OpenWrt on hardware systems, ensuring stable OS operation.
+- Configure and adapt bootloaders (e.g., U-Boot) and assist in kernel module customization.
+- Develop, integrate, and test device drivers for various interfaces (experience with one or more of the following: Ethernet, USB, PCIe, I2C, SPI, UART, GPIO, eMMC/SD, and serial communication).
+- Support hardware bring-up activities, including initial configuration, testing, and troubleshooting.
+- Collaborate with hardware engineering teams to interpret schematics and aid in platform validation.
+- Perform system-level debugging, optimization, and performance tuning.
+- Maintain and update technical documentation for hardware/software integration, test procedures, and release notes.
+","- Develop, port, and maintain Linux kernel components for embedded systems.
+- Implement, configure, and optimize kernel subsystems and device drivers (experience with one or more of the following: Ethernet, USB, PCIe, I2C, SPI, UART, GPIO, CAN bus, eMMC/SD, and serial interfaces).
+-  Adapt and maintain device tree files for custom hardware platforms.
+- Work with bootloaders (e.g., U-Boot) to ensure seamless kernel integration.
+- Diagnose and resolve kernel-level bugs, including crashes, performance bottlenecks, and hardware compatibility issues.
+- Perform kernel patching, upstream contributions, and long-term maintenance of custom kernels.
+- Collaborate with hardware and platform teams for bring-up, validation, and tuning of new boards.
+- Produce and maintain kernel-related technical documentation, build guides, and changelogs.
+","- Design and implement secure boot and trusted execution environments for embedded platforms.
+- Integrate TPMs and other hardware security modules into embedded Linux systems.
+- Develop and maintain firmware protection mechanisms, including encryption and authentication.
+- Collaborate with kernel and platform teams to ensure security features are integrated at all software layers.
+- Perform vulnerability analysis, threat modeling, and security audits for embedded devices.
+- Implement secure update frameworks, including rollback protection and integrity verification.
+- Develop automated tools and scripts for security testing and compliance verification.
+- Maintain security-related technical documentation and guidelines.
+","- Lead software architecture design and contribute to strategic technical decision-making
+- Analyze complex technical problems and propose innovative solutions
+- Collaborate with team members and mentors the software engineers for developing the secure network communication solutions for ASUS network ecosystem devices.
+- Develop high-quality, maintainable code using C/C++ and/or go.
+- Participate in code reviews and continuously improve development skills
+- Assist with software testing, documentation, and troubleshooting","- Designing and implementing software architecture
+- Writing clean, efficient, and maintainable code
+- Participate in code reviews and continuously improve development skills
+- Conducting unit and integration testing
+- Preparing technical documentation to support maintainability and scalability","- Designing and implementing software architecture
+- Writing clean, efficient, and maintainable code
+- Participate in code reviews and continuously improve development skills
+- Conducting unit and integration testing
+- Preparing technical documentation to support maintainability and scalability","- Device Discovery & Onboarding
+- Device LifeCycle Health & Status Management
+- Design Software Architecture","- Backup & Restore System
+- Design Software Architecture","- Certificate & Security Management
+- Design Software Architecture",- Device Configuration Management System,"- RESTful API Design
+- WebSocket & Cloud Communication",- Device Monitoring: Alerting & Notification System,Device Firmware Update Coordination,- Monitoring & Analytics,"- Build RESTful APIs
+- Deliver on-quality and on-time
+- Willing to share knowledge and code review","- Manage Azure cloud infrastructure and services (AKS, Event Hubs, API Management, AD B2C)
+- Ensure high availability and disaster recovery capabilities
+- Design Software Architecture","- Multi-tenant Architecture design
+- Design Software Architecture","- Event Driven Architecture design
+- Network Orchestration & Management
+- Design Software Architecture",- Data Processing & Analytics Engine,Cloud-Local controller communication,"- API Gateway & Management
+- Build webhook systems for event notifications
+- Feature development and deliver
+- Build RESTful APIs
+- Deliver on-quality and on-time","- Frontend team leadership and management
+- Frontend architecture strategy and technical decisions
+- UI/UX design strategy for both Local and Cloud interfaces
+- Cross-team coordination with Backend teams
+- Code review and technical mentorship","- UI Architecture & Performance Optimization
+- Advanced Real-time Systems & PWA development
+- Shared component architecture design
+- Build system and environment configuration
+","- Shared core features development (Local/Cloud)
+- Network device management UI implementation
+- User authentication and session management
+- Monitoring and analytics dashboard development","- MSP tenant management interface development
+- Multi-site management and orchestration UI
+- Cross-tenant analytics and reporting","- WebSocket client implementation and real-time features
+- Advanced notification and alert system development
+- Real-time data binding to UI components
+- Multi-channel notification system
+","- Advanced form management system development
+- Global search and filtering system implementation
+- Dynamic form generation and validation
+- Multi-step wizard interfaces","- API integration and data management
+- Standard charts and dashboard implementation
+- Chart data processing and visualization
+- Cross-environment error handling","- Internationalization and localization system implementation
+- Core network management features development
+- Device configuration forms and validation
+- Alert and notification system (environment-aware)"
+Essential Requirements,"- Bachelor's degree or higher in Computer Engineering, Electrical Engineering, or equivalent technical discipline.
+- Minimum 8 years of professional experience in embedded system development.
+- Strong programming skills in C/C++ and automation scripting (Bash, Python).
+- Deep knowledge of Linux kernel architecture, device tree implementation, and driver frameworks.
+- Working knowledge of version control tools (Git) and embedded build frameworks (OpenWrt, Yocto, Buildroot).
+","- Bachelor's degree in Computer Engineering, Electrical Engineering, or related field.
+- 3+ years of experience in embedded system development.
+- Strong programming skills in C/C++ and scripting (Bash, Python).
+- Good understanding of Linux kernel structure, device tree configuration, and driver development.
+- Familiarity with Git and embedded build frameworks (OpenWrt, Yocto, Buildroot).
+","- Bachelor's degree in Computer Engineering, Electrical Engineering, or related field.
+- 3+ years of experience in Linux kernel development for embedded platforms.
+- Proficiency in C, with solid understanding of kernel internals, memory management, and concurrency.
+- Experience with device tree creation, modification, and debugging.
+- Familiarity with Git, kernel build systems, and cross-compilation toolchains.
+- Strong debugging skills using JTAG, kgdb, and kernel trace tools.
+","- Bachelor's degree in Computer Engineering, Electrical Engineering, Cybersecurity, or related field.
+- 3+ years of experience in embedded system security engineering.
+- Strong understanding of secure boot flows, cryptographic algorithms, and key management.
+- Experience with Linux kernel security features, SELinux/AppArmor, and secure firmware development.
+- Skilled in C/C++ and scripting languages (Bash, Python).
+- Familiarity with Git, build frameworks, and hardware bring-up.
+","- Bachelor's degree in Computer Science, Software Engineering, or a related field (or equivalent practical experience)
+- 6+ years of experience in Linux networking system development and integration.
+- 2+ years of experience in software architecture design
+- Good knowledge of Linux at the system level
+- Familiar with version control system (Git)
+- Demonstrable scripting/programming skills for C/C++ and shell. Experience in go a plus
+- Strong problem-solving and analytical skills.
+- Excellent communication and collaboration skills
+- Ability to work effectively both independently and as part of a team","- Bachelor's degree in Computer Science, Software Engineering, or a related field (or equivalent practical experience)
+- 3+ years of experience in Linux networking system development and integration.
+- Good knowledge of Linux at the system level
+- Familiar with version control system (Git)
+- Demonstrable scripting/programming skills for C/C++ and shell. Experience in go a plus
+- Strong problem-solving and analytical skills.
+- Excellent communication and collaboration skills
+- Ability to work effectively both independently and as part of a team","- Bachelor's degree in Computer Science, Software Engineering, or a related field (or equivalent practical experience)
+- Good knowledge of Linux at the system level
+- Familiar with version control system (Git)
+- Demonstrable scripting/programming skills for C/C++ and shell. Experience in go a plus
+- Strong problem-solving and analytical skills.
+- Excellent communication and collaboration skills
+- Ability to work effectively both independently and as part of a team","- At least 9+ years of experience as Software Engineer
+- Experience in device control, network controller
+- Cross team communication and technical leadership
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing
+- Embedded system experience","- At least 9+ years of experience as Software Engineer
+- Strong Linux programming skills (IPC, system debugging)
+- Database design and migration experience
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing
+- Embedded system experience","- At least 9+ years of experience as Software Engineer
+- Strong knowledge of security protocols (X.509, PKI)
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing
+- Experience with secure system design and implementation
+- Embedded system experience","- At least 6+ years of experience as Software Engineer
+- Knowledge of network device configuration (AP/Switch/Router: Firewall, DNS, VLAN, ethernet port configuration)
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Embedded system experience","- At least 6+ years of experience as Software Engineer
+- Strong API design and RESTful services development
+- Experience with communication protocols (HTTPS, WebSocket, gRPC)
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Embedded system experience","- At least 6+ years of experience as Software Engineer
+- Experience with message queue systems (NATS, RabbitMQ, or similar)
+- Experience in logging and monitoring systems
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Embedded system experience","- At least 6+ years of experience as Software Engineer
+- Strong API design and integration experience
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Embedded system experience","- At least 6+ years of experience as Software Engineer
+- Experience in device monitoring or network analytics
+- Statistical analysis or data processing experience
+- Cross team communication
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Embedded system experience","- At least 3+ years of experience as Software Engineer
+- Experience in Go or Java, Python and willingness to learn Go
+- Strong problem solving skills, responsive and flexible
+- Experience in building RESTful APIs
+- Understanding of software development lifecycle and testing
+- Embedded system experience","- At least 9+ years of experience as Software Engineer
+- Experience with cloud infrastructure management (Azure preferred, AWS or GCP acceptable)
+- Container orchestration and cluster management experience (Kubernetes, Docker)
+- High availability and disaster recovery system design experience
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing","- At least 9+ years of experience as Software Engineer
+- Multi-tenant system architecture design OR user management and access control system experience (RBAC, ABAC)
+- Database design and migration experience with tenant isolation
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing
+- Container orchestration experience (Kubernetes, Docker)","- At least 9+ years of experience as Software Engineer
+- Event-driven architecture and message queue systems experience (Apache Kafka, NATS, or similar)
+- Network orchestration and automation experience
+- Microservice resilience patterns experience (circuit breaker, rate limiting, retry mechanisms)
+- Proficiency in Go, Java, Python or equivalent experience with willingness to learn Go
+- Understanding of software development lifecycle and testing
+- Container orchestration experience (Kubernetes, Docker)","- At least 6+ years of experience as Software Engineer
+- Experience with relational databases (PostgreSQL) and search engines (ElasticSearch)
+- Data processing and analytics pipeline development experience
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Microservice architecture experience
+- Container technology experience (Kubernetes, Docker)","- At least 6+ years of experience as Software Engineer
+- Strong experience with communication protocols (HTTPS, WebSocket, gRPC)
+- Distributed system communication and synchronization experience
+- Experience in Go or Java, Python and willingness to learn Go
+- Understanding of software development lifecycle, CI/CD flow, and testing
+- Microservice architecture experience
+- Container technology experience (Kubernetes, Docker)","- At least 3+ years of experience as Software Engineer
+- Experience in Go or Java, Python and willingness to learn Go
+- Strong problem solving skills, responsive and flexible
+- Experience in building RESTful APIs
+- Understanding of software development lifecycle and testing
+- Knowledge with microservice and container technology","- Experience in React or Vue, TypeScript
+- Frontend team leadership and management experience
+- Unified codebase architecture with feature flags and build-time configuration
+- Enterprise UI/UX design strategy
+- Understanding of software development lifecycle and testing","- At least 7+ years of experience as Frontend Engineer
+- Expert-level React or Vue framework architecture and design patterns
+- Experience in React or Vue, TypeScript
+- Complex state management experience (Redux, Zustand, or similar)
+- WebSocket implementation and real-time data visualization
+- Understanding of software development lifecycle and testing","- At least 6+ years of experience as Frontend Engineer
+- Experience in React or Vue, TypeScript
+- Network device management interface development experience
+- API integration and data management experience
+- Understanding of software development lifecycle, CI/CD flow, and testing","- At least 6+ years of experience as Frontend Engineer
+- Multi-tenant UI development experience
+- Experience in React or Vue, TypeScript
+- Dynamic branding and theming system experience
+- Understanding of software development lifecycle, CI/CD flow, and testing","- At least 6+ years of experience as Frontend Engineer
+- WebSocket implementation and real-time communication experience
+- Experience in React or Vue, TypeScript
+- Notification system development experience
+- Understanding of software development lifecycle, CI/CD flow, and testing","- At least 6+ years of experience as Frontend Engineer
+- Advanced form library expertise (Formik, React Hook Form, or similar)
+- Experience in React or Vue, TypeScript
+- Search implementation and filtering system experience
+- Understanding of software development lifecycle, CI/CD flow, and testing
+","- At least 4+ years of experience as Frontend Engineer
+- API integration and data fetching experience
+- Experience in React or Vue, TypeScript
+- Chart library integration experience (Chart.js, Recharts, or similar)
+- Understanding of software development lifecycle and testing","- At least 4+ years of experience as Frontend Engineer
+- i18n framework integration experience (react-i18next, vue-i18n, or similar)
+- Experience in React or Vue, TypeScript
+- Form development and validation experience
+- Understanding of software development lifecycle and testing"
+Preferred Qualifications,"- Experience with ARM-based architectures.
+- Hands-on experience in bootloader development and hardware-level interface programming.
+- Understanding of secure boot implementation, TPM integration, and firmware protection mechanisms.
+- Experience with debugging frameworks including eBPF, memory analysis tools, and system profiling utilities.
+","- Experience with ARM-based architectures.
+- Experience with bootloaders and low-level interface programming.
+- Exposure to secure boot, TPM integration, or firmware protection techniques.
+- Experience with system debugging tools and performance profiling.
+","- Experience with ARM-based architectures.
+- Experience upstreaming patches to the Linux kernel community.
+- Familiarity with eBPF, ftrace, perf, or similar profiling frameworks.
+","- Experience with ARM-based architectures.
+- Knowledge of hardware root-of-trust and trusted firmware implementations.
+- Experience with penetration testing of embedded devices.
+- Familiarity with compliance standards (e.g., FIPS, Common Criteria. CRA or RED).
+","- Experience with security practices in software development
+- A strong foundational understanding of networking concepts, including L2/L3 packets, TCP/UDP/IP, DHCP, and DNS.
+- Familiar with cloud platforms (e.g., AWS, Azure, GCP) and/or experience with the cloud native software development","- Experience in software architecture design
+- Experience with security practices in software development
+- A strong foundational understanding of networking concepts, including L2/L3 packets, TCP/UDP/IP, DHCP, and DNS.
+- Familiar with cloud platforms (e.g., AWS, Azure, GCP) and/or experience with the cloud native software development","- Experience with security practices in software development
+- A strong foundational understanding of networking concepts, including L2/L3 packets, TCP/UDP/IP, DHCP, and DNS.
+- Familiar with cloud platforms (e.g., AWS, Azure, GCP) and/or experience with the cloud native software development","- Network device management (AP/Switch/Router configuration)
+- Message queue systems (NATS or similar)
+- CI/CD pipeline design
+- Experience in Security protocols
+- RTOS experience","- Network controller or embedded systems experience
+- System-level debugging tools (GDB, strace)
+- CI/CD pipeline design
+- Data backup and disaster recovery systems
+- RTOS experience","- Hardware security modules (TPM) experience
+- Network device authentication and authorization
+- mTLS and certificate management systems
+- CI/CD integration
+- RTOS experience","- Network controller or device management experience
+- Network protocols (SNMP, SSH, Telnet)
+- Knowledge of CI/CD pipeline
+- RTOS experience","- Real-time communication systems experience
+- API gateway and rate limiting
+- Cloud integration experience
+- Knowledge of CI/CD pipeline
+- RTOS experience","- Network device monitoring experience
+- Alert management systems (PagerDuty, Slack integration)
+- Knowledge of CI/CD pipeline
+- RTOS experience","- Device firmware or version management experience
+- Over-the-air (OTA) update systems
+- File transfer and validation protocols
+- Knowledge of CI/CD pipeline
+- RTOS experience","- Network device management experience
+- Data visualization and dashboard development
+- Web UI development for monitoring dashboards
+- Performance monitoring and optimization
+- Knowledge of CI/CD pipeline
+- RTOS experience","- Network device or embedded systems experience
+- Knowledge of CI/CD pipeline
+- Understanding of security concepts
+- Database design and optimization
+- RTOS experience","- Azure-specific services (AKS, Event Hubs, API Management, AD B2C)
+- Authentication protocols (OAuth 2.0, JWT, mTLS)
+- Network controller or device management experience
+- CI/CD pipeline design
+- Infrastructure as Code (Terraform, ARM templates)","- User Service and identity management systems
+- Data isolation and security patterns
+- System-level debugging tools (GDB, strace)
+- Network controller or device management experience
+- CI/CD pipeline design","- Stream processing and real-time data handling
+- Service mesh and API gateway experience
+- Network controller or device management experience
+- CI/CD pipeline design
+- Distributed system monitoring and observability","- Time-series databases (InfluxDB, TimescaleDB)
+- ELK stack (Elasticsearch, Logstash, Kibana)
+- Data visualization and reporting tools
+- Network device monitoring or analytics experience
+- Knowledge of CI/CD pipeline","- Network controller or device management experience
+- Real-time data synchronization systems
+- Message queue systems (NATS, Kafka)
+- API gateway and load balancing
+- Knowledge of CI/CD pipeline
+","- API gateway and webhook system experience
+- Network device or embedded systems experience
+- Knowledge of CI/CD pipeline
+- Understanding of security concepts","- Figma proficiency for UI/UX design and prototyping
+- Cross-platform design consistency experience
+- Knowledge of CI/CD pipeline
+- Understanding of network management concepts","- Progressive Web App and Service Worker experience
+- Advanced data visualization libraries (D3.js, Canvas API)
+- Multi-target build system experience
+- Performance optimization for large-scale applications
+- Knowledge of CI/CD pipeline","- Network configuration and management knowledge
+- Real-time monitoring dashboard experience
+- Authentication system integration experience
+- Knowledge of CI/CD pipeline","- White-label customization system experience
+- MSP business model understanding
+- Knowledge of CI/CD pipeline","- Browser push notification integration experience
+- Alert management and escalation workflow experience
+- Real-time data synchronization experience
+- Knowledge of CI/CD pipeline","- Full-text search implementation experience
+- Complex validation patterns and business rules
+- Multi-step interface and state management
+- Knowledge of CI/CD pipeline","- Data visualization and dashboard development experience
+- RESTful API and WebSocket integration
+- Performance optimization for data-heavy applications
+- Knowledge of CI/CD pipeline","- Multi-language support and RTL layout experience
+- Network device configuration knowledge
+- Locale-specific formatting experience
+- Knowledge of CI/CD pipeline"
