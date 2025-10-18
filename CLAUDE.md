@@ -82,218 +82,187 @@
 
 ## Jupyter Notebook Management
 
+### 🎯 核心原則：使用 MD 作為中間格式
+
+**為了避免 JSON token 限制問題，所有 Jupyter Notebook 創建都應該遵循以下流程：**
+
+1. **撰寫階段**：使用 Markdown 格式撰寫內容（省 60-70% token）
+2. **轉換階段**：使用 Go 轉換器生成 .ipynb 文件
+3. **維護階段**：只要修改, 都要先確認同一個folder有沒有筆記的raw file(md format), 如果有的話都是修改MD file; 如果沒有MD file, 就先把本來資料寫入MD file之後, 再使用go轉換器
+
 ### 🛠️ Tool Selection Rules
 
 | 任務類型 | 使用工具 | 說明 |
 |----------|----------|------|
-| **新建 notebook** | `Write` | 一次性創建完整結構 |
-| **修改單一 cell** | `NotebookEdit` | 替換或修改特定 cell |
-| **修改多個 cells** | `Write` | 重新創建整個 notebook |
-| **修復損壞檔案** | `Write` | 萃取內容後重建 |
+| **新建 notebook** | `Write` → MD → `Bash` 轉換 | 先寫 .md，再用轉換器生成 .ipynb |
+| **修改 notebook** | `Edit` MD → `Bash` 轉換 | 修改 .md 源文件，重新轉換 |
+| **修復損壞檔案** | `Write` Markdown → `Bash` 轉換 | 萃取內容寫成 .md，重新轉換 |
 
-### ✨ Best Practices
+### 📝 Markdown 源文件格式
 
-#### 1. **Meaningful Cell IDs 命名規範**
+詳細的格式規範請參考 [./md_to_ipynb_converter/README.md](./md_to_ipynb_converter/README.md)
 
-所有 notebook cells 都應該有語義化的 ID，便於理解和維護：
+**快速參考：**
 
+- **Markdown Cell**: `<!-- MARKDOWN_CELL -->` 和 `<!-- END_MARKDOWN_CELL -->` 包圍
+- **Code Cell**: `<!-- CODE_CELL -->` 和 `<!-- END_CODE_CELL -->` 包圍
+- **Code Fence**: 使用 ` ```go ` （會被自動移除）
+- **所有 cells 都必須有結束標記**
+
+範例：
 ```markdown
-命名模式：
-- chapter-intro           # 章節介紹
-- section-1-basics        # 第一節：基礎概念
-- code-pointer-basic      # 指標基礎程式碼範例
-- section-2-slice         # 第二節：切片
-- code-slice-demo         # 切片示範程式碼
-- section-3-map           # 第三節：映射
-- code-map-examples       # 映射範例
-- chapter-summary         # 章節總結
-- practice-exercises      # 練習題
+<!-- MARKDOWN_CELL -->
+# 標題
+
+說明內容...
+<!-- END_MARKDOWN_CELL -->
+
+<!-- CODE_CELL -->
+```go
+package main
+// ...
+```
+<!-- END_CODE_CELL -->
 ```
 
-**ID 命名原則**：
-- 使用 kebab-case (小寫 + 連字符)
-- 包含內容類型前綴：`chapter-`, `section-`, `code-`, `practice-`
-- 描述性名稱，一看就知道內容
-- 按邏輯順序編號：`section-1`, `section-2`
+### 🚀 標準創建 Notebook 流程
 
-#### 2. **NotebookEdit 僅用於 Replace/Edit**
+#### Step 1: 撰寫 Markdown 源文件
 
-**✅ 推薦用法**：
+##### 🎯 方法 A: 一次撰寫完成（適合小型章節）
+
+```bash
+# 使用 Write 工具一次撰寫完整內容
+Write → chN/chN_topic_source.md
+```
+
+**優勢**：
+- Markdown 格式比 JSON 省 60-70% token
+- 最簡單直接的方式
+- 人類可讀，易於維護和修改
+
+**適用情境**：
+- 章節內容較少（< 15,000 tokens）
+- 可以一次性完成所有內容
+
+##### 🔄 方法 B: 分段撰寫（適合大型章節，推薦！）
+
+當章節內容龐大，單次 Write 會超過 token 限制時，使用分段撰寫策略：
+
+```bash
+# 第一段：寫入檔案開頭 + 前面幾節
+Write → chN/chN_topic_source.md
+# 包含：文件開頭、第一節、第二節等
+
+# 第二段：追加中間幾節
+Edit → chN/chN_topic_source.md
+# 在文件末尾 append 第三節、第四節等
+
+# 第三段：追加剩餘內容
+Edit → chN/chN_topic_source.md
+# 在文件末尾 append 最後幾節
+```
+
+**分段策略**：
+1. **規劃階段**：使用 TodoWrite 規劃這一章要拆成幾個部分（建議按「節」來分）
+2. **第一次 Write**：寫入前 30-40% 的內容
+3. **後續 Edit (append)**：每次追加 30-40% 的內容
+4. **確保連貫性**：每段的開頭和結尾要確保格式正確（cell 標記完整）
+
+**優勢**：
+- 每次操作的 token 量可控（< 32,000 tokens）
+- 避免單次操作超過限制
+- 逐步建立完整文件，降低出錯風險
+- 仍然保留 Markdown 源文件的所有優點
+
+**注意事項**：
+- 每次 Edit 都是在文件**末尾追加**內容
+- 確保每段的最後一個 cell 有正確的結束標記 `<!-- END_MARKDOWN_CELL -->` 或 `<!-- END_CODE_CELL -->`
+- 下一段的開頭要從新的 cell 標記開始（`<!-- MARKDOWN_CELL -->` 或 `<!-- CODE_CELL -->`）
+
+**範例**：
+```markdown
+# 第一次 Write 的結尾
+<!-- CODE_CELL -->
+```go
+// 第二節的最後一個範例
+```
+<!-- END_CODE_CELL -->
+
+# 第二次 Edit 的開頭（append 到文件末尾）
+<!-- MARKDOWN_CELL -->
+## 第三節：...
+<!-- END_MARKDOWN_CELL -->
+```
+
+#### Step 2: 執行轉換
+
+```bash
+# 使用 Bash 工具執行轉換器
+Bash → ./md_to_ipynb_converter/md2ipynb chN/chN_topic_source.md chN/chN_topic.ipynb
+```
+
+**轉換器位置**：`/Users/hank/Workspace/hank/learning-go/md_to_ipynb_converter/md2ipynb`
+
+#### Step 3: 驗證結果
+
+```bash
+# 1. 驗證 JSON 格式
+Bash → python3 -m json.tool chN/chN_topic.ipynb > /dev/null && echo "✅ JSON 正確"
+
+# 2. 預覽 notebook 結構
+Read → chN/chN_topic.ipynb (limit: 50)
+```
+
+#### Step 4: 清理源文件（可選）
+
+```bash
+# 如果不需要保留 Markdown 源文件
+Bash → rm chN/chN_topic_source.md
+```
+
+### ✨ 小幅修改現有 Notebook
+
+如果只需要修改單一 cell，可以直接使用 NotebookEdit：
+
 ```json
-// 修改現有 cell 內容
 {
   "notebook_path": "/path/to/notebook.ipynb",
-  "cell_id": "code-pointer-basic",
-  "new_source": "/* 更新的程式碼 */\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    var x int = 42\n    var p *int = &x  // p 指向 x 的位址\n    fmt.Println(\"x =\", x)      // 印出: x = 42\n    fmt.Println(\"&x =\", &x)    // 印出: &x = 0xc000018098\n    fmt.Println(\"p =\", p)      // 印出: p = 0xc000018098\n    fmt.Println(\"*p =\", *p)    // 印出: *p = 42\n}"
-}
-
-// 替換特定章節說明
-{
-  "notebook_path": "/path/to/notebook.ipynb",
-  "cell_id": "section-1-basics",
-  "new_source": "## 1.1 指標基礎概念\n\n更新的說明內容..."
+  "cell_id": "cell-id",
+  "new_source": "更新的內容..."
 }
 ```
 
-**❌ 避免的用法**：
-```json
-// 不要用 insert 模式
-{
-  "edit_mode": "insert",  // 會導致順序問題
-  "cell_type": "markdown",
-  "new_source": "新內容"
-}
+**注意**：
+- 只用於小幅修改（1-2 個 cells）
+- 大幅修改應該回到 Markdown 源文件重新轉換
+- 絕對不要使用 `insert` 模式
+
+### ⚠️ 重要注意事項
+
+1. **優先使用 Markdown 流程** - 除非是非常小的修改，否則都應該使用 Markdown → 轉換的流程
+2. **避免直接 Write .ipynb** - JSON 格式容易超過 token 限制且難以維護
+3. **保留源文件選項** - 建議保留 `_source.md` 文件方便未來修改
+4. **測試轉換器** - 轉換器已經過完整測試（20 個測試全通過）
+
+### 🔧 修復損壞的 Notebook
+
+如果遇到 Notebook 損壞的情況：
+
+1. **Read 檔案萃取內容** - 即使 JSON 損壞，內容通常還是可讀的
+2. **重新組織成 Markdown** - 將內容整理成 Markdown 源文件格式
+3. **使用轉換器重建** - 用轉換器生成新的 .ipynb 文件
+
+```bash
+# 範例修復流程
+Read → chN/broken.ipynb                    # 萃取內容
+Write → chN/chN_topic_source.md            # 重新組織成 Markdown
+Bash → ./md_to_ipynb_converter/md2ipynb \              # 重新轉換
+        chN/chN_topic_source.md \
+        chN/chN_topic.ipynb
 ```
 
-#### 3. **預規劃 Notebook 結構**
+### 📚 轉換器詳細文檔
 
-在創建 notebook 前，先規劃完整結構：
-
-```markdown
-規劃範例 - Chapter 3: Pointers
-1. chapter-intro          : 章節介紹和學習目標
-2. section-1-basics       : 指標基礎概念
-3. code-basic-example     : 基礎指標範例
-4. section-2-operations   : 指標操作
-5. code-operations-demo   : 操作示範
-6. section-3-functions    : 指標與函式
-7. code-functions-example : 函式參數指標範例
-8. section-4-arrays       : 指標與陣列
-9. code-arrays-demo       : 陣列指標示範
-10. chapter-summary       : 章節總結
-```
-
-### ⚠️ 絕對禁止的操作
-1. **使用 NotebookEdit insert** - 不同task不知道彼此做了什麼, 所以會導致 cell 順序顛倒
-2. **混用 Write 和 NotebookEdit** - 容易產生結構衝突
-3. **手動轉義 JSON 屬性名** - `"metadata"` 不要寫成 `\"metadata\"`
-4. **在損壞檔案上直接修復** - 必須重新創建
-
-**執行流程**：
-1. **規劃階段**: 列出所有 sections 和對應 cell IDs
-2. **準備階段**: 準備所有 markdown 和 code 內容
-3. **檢查階段**: 檢查輸出格式
-  - [ ] 所有引號格式一致（無 `\"` 轉義字符）
-  - [ ] JSON 結構完整（brackets 和 braces 配對）
-  - [ ] metadata 部分格式與 cells 部分一致
-4. **創建階段**: 使用 Write 工具一次性創建完整結構
-  - 如果遇到Output Token Maximum超過的API Error, 就把筆記拆成兩份.
-5. **維護階段**: 只用 NotebookEdit replace 模式做小幅修正
-
-### 📋 正確的 Jupyter Notebook JSON 結構
-
-```json
-{
-  "cells": [
-    {
-      "cell_type": "markdown",
-      "id": "unique-cell-id",
-      "metadata": {},
-      "source": [
-        "# 章節標題\n",
-        "\n",
-        "這是 markdown 內容"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "id": "code-cell-id",
-      "metadata": {},
-      "execution_count": null,
-      "outputs": [],
-      "source": [
-        "/* Go 程式範例 */\n",
-        "package main\n",
-        "\n",
-        "import \"fmt\"\n",
-        "\n",
-        "func main() {\n",
-        "    fmt.Println(\"Hello, World!\")\n",
-        "}"
-      ]
-    }
-  ],
-  "metadata": {
-    "kernelspec": {
-      "display_name": "Go",
-      "language": "go",
-      "name": "gophernotes"
-    },
-    "language_info": {
-      "file_extension": ".go",
-      "mimetype": "text/x-go",
-      "name": "go"
-    }
-  },
-  "nbformat": 4,
-  "nbformat_minor": 4
-}
-```
-
-### 🔥 Critical JSON Formatting Rules
-
-**根本問題**: 混合使用轉義和非轉義引號格式會導致 JSON 解析失敗
-
-**❌ 錯誤的混合格式**:
-```json
-"cells": [...],           // ✓ 正確的非轉義格式
-\"metadata\": {           // ✗ 錯誤的轉義格式
-  \"kernelspec\": {...}   // ✗ 造成解析錯誤
-}
-```
-
-**✅ 正確的一致格式**:
-```json
-"cells": [...],
-"metadata": {
-  "kernelspec": {...}
-}
-```
-
-**Prevention Rules**:
-- 整個 JSON 檔案必須使用一致的引號格式
-- 使用 Write tool 時檢查是否有 `\"` 轉義字符出現
-- metadata 部分必須與 cells 部分使用相同格式
-
-## Notebook 修復流程
-
-### 🚨 診斷損壞的 Notebook
-
-1. **識別錯誤**: JSON 解析錯誤通常出現在特定行列位置
-2. **萃取內容**: 即使 JSON 損壞，內容通常還是可讀的
-3. **重建策略**: 完全重新創建，不要嘗試修復
-
-### 🔧 修復標準流程
-
-```markdown
-1. **診斷階段**
-   - 嘗試 Read 檔案（會顯示錯誤位置）
-   - 用 Bash 工具查看檔案結構
-
-2. **萃取階段**
-   - 從損壞檔案中複製所有 markdown 和 code 內容
-   - 重新組織內容結構和邏輯順序
-
-3. **重建階段**
-   - 移除損壞檔案
-   - 使用 Write 工具創建全新的正確結構
-   - 確保所有 cell ID 唯一
-
-4. **驗證階段**
-   - 確認新檔案可以正常開啟
-   - 檢查內容完整性
-```
-
-### ⚡ 快速修復檢查清單
-
-**修復前檢查**:
-- [ ] 已確認檔案損壞的具體位置
-- [ ] 已萃取所有重要內容
-- [ ] 已規劃重建後的結構
-
-**修復後檢查**:
-- [ ] 檔案可以正常開啟
-- [ ] 所有 cell ID 唯一
-- [ ] JSON 格式一致（無混合引號）
-- [ ] 內容完整性確認
+更多詳細資訊請參考：[./md_to_ipynb_converter/README.md](./md_to_ipynb_converter/README.md)
 
